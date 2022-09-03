@@ -1,0 +1,468 @@
+.products-slider {
+	&__container {
+	}
+
+	&__header {
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 50, 30);
+		}
+
+		@media (min-width: $mobile) {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: rem(20);
+		}
+	}
+
+	&__title {
+		font-size: rem(30);
+		line-height: math.div(46, 30);
+		font-weight: 700;
+		letter-spacing: 0.05em;
+	}
+
+	&__more {
+		display: inline-flex;
+		align-items: center;
+		gap: em(15, 18);
+		font-weight: 600;
+		font-size: rem(18);
+		line-height: math.div(46, 18);
+		letter-spacing: 0.05em;
+		color: rgba(20, 20, 20, 0.58);
+		transition: color 0.3s ease 0s;
+
+		&::after {
+			@extend %ic;
+			content: "\e901";
+			transform: rotate(-90deg);
+			color: $orangeColor;
+			font-size: em(7, 18);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: rgba(20, 20, 20, 1);
+			}
+		}
+	}
+
+	&__slider {
+		padding: rem(15) rem(20);
+		margin: 0 rem(-20);
+	}
+
+	&__wrapper {
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 50, 30);
+		}
+	}
+
+	&__dotts {
+	}
+}
+
+.product-card {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	height: 100%;
+	background-color: #fff;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s ease 0s;
+	position: relative;
+
+	@media (any-hover: hover) {
+		&:hover {
+			box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.2);
+		}
+	}
+
+	&__sale {
+		position: absolute;
+		top: rem(20);
+		left: 0;
+		background-color: $orangeColor;
+		color: #fff;
+		padding: rem(6) rem(22);
+		z-index: 10;
+		pointer-events: none;
+	}
+
+	&__image {
+		@include adaptiveValue("padding-top", 25, 15);
+		@include adaptiveValue("padding-bottom", 25, 15);
+		@include adaptiveValue("padding-left", 50, 15);
+		@include adaptiveValue("padding-right", 50, 15);
+	}
+
+	&__item-image-ibg {
+		display: block;
+		padding-bottom: percent(240, 270);
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		padding: rem(20);
+	}
+
+	&__title {
+		flex: 1 1 auto;
+		font-weight: 600;
+		font-size: rem(20);
+		line-height: math.div(34, 20);
+
+		&:not(:last-child) {
+			margin-bottom: em(10, 20);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__info {
+		&:not(:last-child) {
+			margin-bottom: em(15, 16);
+		}
+	}
+
+	&__rating {
+		justify-content: space-between;
+		&:not(:last-child) {
+			margin-bottom: rem(26);
+		}
+	}
+
+	&__footer {
+		display: flex;
+		align-items: center;
+		gap: rem(15);
+		border-top: 1px solid rgba(20, 20, 20, 0.5);
+		padding: rem(20) 0;
+	}
+
+	&__price {
+		flex: 1 1 auto;
+		font-weight: 600;
+		font-size: rem(20);
+		line-height: math.div(34, 20);
+	}
+
+	&__compare,
+	&__favorite {
+		font-size: rem(24);
+		transition: color 0.3s ease 0s;
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: $orangeColor;
+			}
+		}
+	}
+
+	&__cart {
+		width: 100%;
+		span {
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: center;
+			align-items: center;
+
+			&::before {
+				margin: 0 0 0 rem(16);
+			}
+		}
+	}
+}
+
+.info-product-card {
+	color: #ababab;
+	display: flex;
+	justify-content: space-between;
+	gap: rem(10);
+	font-size: rem(16);
+	font-weight: 600;
+
+	&__materials {
+		text-align: right;
+	}
+}
+
+//======================================================================================================================================
+
+.dotts {
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: center;
+	margin: 0 auto;
+	overflow: hidden;
+
+	.swiper-pagination-bullet {
+		margin: 0 rem(7.5);
+		position: relative;
+		cursor: pointer;
+		height: rem(30);
+		width: rem(18);
+		transition: all 0.3s ease 0s;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			height: rem(2);
+			background-color: #898989;
+			transform: translate(0, -50%);
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			width: rem(10);
+			height: rem(10);
+			background-color: $orangeColor;
+			top: 50%;
+			left: 0;
+			border-radius: 50%;
+			transform: translate(0, -50%);
+			opacity: 0;
+		}
+	}
+
+	.swiper-pagination-bullet-active {
+		&::after {
+			background-color: $orangeColor;
+		}
+
+		&::before {
+			opacity: 1;
+			left: rem(8);
+			transition: left 3s linear 0s;
+		}
+	}
+}
+
+//======================================================================================================================================
+
+.products-new {
+	padding: rem(45) 0 0 0;
+	background: url("@img/news/bg.png") bottom / cover no-repeat;
+	position: relative;
+
+	&::before {
+		content: "";
+		background-color: #fff;
+		height: rem(45);
+		width: percent(1030, 1920);
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	&__inner {
+		@include adaptiveValue("padding-top", 55, 20);
+		@include adaptiveValue("padding-bottom", 46, 20);
+	}
+
+	&__container {
+		display: grid;
+		row-gap: 30px;
+
+		@media (min-width: $tablet) {
+			grid-template-columns: rem(400) 1fr;
+			align-items: start;
+		}
+	}
+
+	&__body {
+		@include adaptiveValue("padding-right", 70, 20, 1630, 992, 2);
+	}
+
+	&__section {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: rem(30);
+		line-height: math.div(46, 30);
+		letter-spacing: 0.05em;
+		color: #fff;
+
+		&:not(:last-child) {
+			margin-bottom: em(30, 30);
+		}
+	}
+
+	&__text {
+		font-size: rem(18);
+		line-height: math.div(27, 18);
+		letter-spacing: 0.03em;
+		color: rgba(255, 255, 255, 0.7);
+
+		@include adaptiveValue("margin-bottom", 60, 20);
+	}
+
+	&__link {
+	}
+
+	&__slider {
+	}
+
+	&__content {
+		min-width: 0;
+
+		@media (min-width: $tablet) {
+			padding: rem(37) 0 0 0;
+		}
+	}
+
+	&__wrapper {
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 50, 20);
+		}
+	}
+
+	&__slide {
+	}
+
+	&__dotts {
+		position: relative;
+		z-index: 3;
+	}
+}
+
+//======================================================================================================================================
+
+.link-arrow {
+	display: inline-flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	color: $orangeColor;
+	font-size: rem(20);
+	font-weight: 600;
+
+	&::before {
+		margin: 0 0 0 em(20, 20);
+		font-size: rem(9);
+		transform: rotate(-90deg);
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			span {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+//======================================================================================================================================
+
+.breadcrumbs {
+	overflow: auto;
+	white-space: nowrap;
+	height: rem(22);
+
+	&__list {
+		display: flex;
+	}
+
+	&__item {
+		font-size: rem(16);
+		line-height: math.div(20, 16);
+	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		color: $mainDarkColor;
+		opacity: 0.5;
+		&::after {
+			content: "\e901";
+			@extend %ic;
+			transform: rotate(-90deg);
+			font-size: rem(6);
+			margin: 0px em(15, 6);
+		}
+	}
+
+	&__current {
+		color: $orangeColor;
+	}
+}
+
+//======================================================================================================================================
+
+.title {
+	font-weight: 700;
+	font-size: rem(24);
+	line-height: math.div(29, 24);
+	&:not(:last-child) {
+		margin-bottom: em(25, 24);
+	}
+}
+
+//======================================================================================================================================
+
+.pagination {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	@include adaptiveValue("gap", 30, 15);
+
+	&__arrow {
+		color: $orangeColor;
+		&::before {
+			font-size: rem(10);
+		}
+
+		&:disabled {
+			color: rgba(0, 0, 0, 0.12);
+		}
+
+		&_left {
+			transform: rotate(90deg);
+		}
+
+		&_right {
+			transform: rotate(-90deg);
+		}
+	}
+
+	&__list {
+		display: flex;
+		align-items: center;
+		gap: rem(13);
+	}
+
+	&__item {
+	}
+
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: rem(34);
+		height: rem(34);
+		border-radius: 50%;
+		&._active {
+			background-color: $orangeColor;
+			color: #fff;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: $orangeColor;
+				color: #fff;
+			}
+		}
+	}
+}
+
+//=========================================================================================================================
+

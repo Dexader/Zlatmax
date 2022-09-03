@@ -1,0 +1,138 @@
+.checkbox {
+	position: relative;
+	&:not(:last-child) {
+		margin-bottom: em(5);
+	}
+	// .checkbox__input
+	&__input {
+		position: absolute;
+		width: 0;
+		height: 0;
+		opacity: 0;
+		&:focus + .checkbox__label:before {
+			//box-shadow: 0 0 5px #000;
+		}
+		&:checked + .checkbox__label:after {
+			transform: scale(1);
+		}
+	}
+	// .checkbox__label
+	&__label {
+		cursor: pointer;
+		display: inline-flex;
+		align-items: center;
+		position: relative;
+		gap: 10px;
+		&:before {
+			content: "";
+			align-self: flex-start;
+			flex: 0 0 rem(20);
+			width: rem(20);
+			height: rem(20);
+			border: 1px solid #e8aa31;
+			border-radius: 2px;
+		}
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			transform: scale(0);
+			position: absolute;
+			width: rem(14);
+			height: rem(14);
+			border-radius: 2px;
+			top: 3px;
+			left: 3px;
+			background-color: #e8aa31;
+		}
+	}
+	// .checkbox__text
+	&__text {
+		small {
+			color: $orangeColor;
+		}
+
+		&_1 {
+			&::before {
+				content: "★★★★★";
+				font-size: rem(35);
+				letter-spacing: em(8, 35);
+				color: #ffd300;
+				position: absolute;
+				top: -50%;
+			}
+		}
+
+		&_2 {
+			&::before {
+				content: "★★★★";
+				font-size: rem(35);
+				letter-spacing: em(8, 35);
+				color: #ffd300;
+				position: absolute;
+				top: -50%;
+			}
+		}
+
+		&_3 {
+			&::before {
+				content: "★★★";
+				font-size: rem(35);
+				letter-spacing: em(8, 35);
+				color: #ffd300;
+				position: absolute;
+				top: -50%;
+			}
+		}
+
+		&_4 {
+			&::before {
+				content: "★★";
+				font-size: rem(35);
+				letter-spacing: em(8, 35);
+				color: #ffd300;
+				position: absolute;
+				top: -50%;
+			}
+		}
+
+		&_5 {
+			&::before {
+				content: "★";
+				font-size: rem(35);
+				letter-spacing: em(8, 35);
+				color: #ffd300;
+				position: absolute;
+				top: -50%;
+			}
+		}
+	}
+
+	&_star {
+		display: flex;
+		position: relative;
+	}
+
+	&__num {
+
+		&_1 {
+			margin-left: rem(195);
+		}
+
+		&_2 {
+			margin-left: rem(155);
+		}
+
+		&_3 {
+			margin-left: rem(115);
+		}
+
+		&_4 {
+			margin-left: rem(75);
+		}
+
+		&_5 {
+			margin-left: rem(35);
+		}
+
+	}
+}
